@@ -1,5 +1,6 @@
 package br.com.casadocodigo.livraria.persistencia;
 
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.casadocodigo.livraria.modelo.Estante;
@@ -15,8 +16,15 @@ public class UmaEstanteQualquer implements Estante {
 
 	@Override
 	public List<Livro> todosOsLivros() {
-		// TODO Auto-generated method stub
-		return null;
+		Livro vraptor = new Livro();
+		vraptor.setTitulo("VRaptor 3");
+		vraptor.setDescricao("Um livro sobre VRaptor 3");
+
+		Livro arquitetura = new Livro();
+		arquitetura.setTitulo("Arquitetura");
+		arquitetura.setDescricao("Um livro sobre arquitetura");
+
+		return Arrays.asList(vraptor, arquitetura);
 	}
 
 }
