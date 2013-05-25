@@ -4,7 +4,7 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <property name="context-root" value="/"/>
         <property name="java-output-path" value="/src/main/webapp/WEB-INF/classes"/>
+        <property name="context-root" value="livraria-admin"/>
     </wb-module>
 </project-modules>
