@@ -1,3 +1,8 @@
+<c:if test="${not empty mensagem}">
+	<p class="mensagem">
+		${mensagem}
+	</p>
+</c:if>
 <h3>Lista de Livros</h3>
 <ul>
 <c:forEach items="${livroList}" var="livro">
