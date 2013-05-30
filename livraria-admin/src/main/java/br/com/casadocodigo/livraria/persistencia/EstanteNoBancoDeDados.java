@@ -2,9 +2,11 @@ package br.com.casadocodigo.livraria.persistencia;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.ioc.Component;
 import br.com.casadocodigo.livraria.modelo.Estante;
 import br.com.casadocodigo.livraria.modelo.Livro;
 
+@Component
 public class EstanteNoBancoDeDados implements Estante {
 
 	private LivroDAO dao;

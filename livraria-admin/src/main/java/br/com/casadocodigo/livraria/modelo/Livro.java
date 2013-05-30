@@ -3,10 +3,16 @@ package br.com.casadocodigo.livraria.modelo;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Livro {
+	@Id
+	private String isbn;
+
 	private String titulo;
 	private String descricao;
-	private String isbn;
 	private BigDecimal preco;
 	private Calendar dataPublicacao;
 
