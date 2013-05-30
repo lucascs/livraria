@@ -10,7 +10,7 @@ import br.com.casadocodigo.livraria.modelo.Livro;
 @Resource
 public class LivrosController {
 
-	private Estante estante;
+	private final Estante estante;
 
 	public LivrosController(Estante estante) {
 		this.estante = estante;
