@@ -1,5 +1,10 @@
 package br.com.casadocodigo.livraria.controlador;
 
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -28,13 +33,14 @@ public class LivrosController {
 
 	public void salva(final Livro livro) {
 		validator.checking(new Validations() {{
-			that(livro.getTitulo() != null, "titulo", "campo.obrigatorio", "título");
+			that(livro.getTitulo(), is(notNullValue()));
 
-			if (that(livro.getPreco() != null, "preco", "campo.obrigatorio", "preco"))
-				that(livro.getPreco().compareTo(BigDecimal.ZERO) > 0,
-						"preco", "campo.maior.que", "preço", 0);
+			that(livro.getPreco(), is(allOf(
+					notNullValue(),
+					greaterThan(BigDecimal.ZERO)
+			)));
 
-			that(livro.getIsbn() != null, "isbn", "campo.obrigatorio", "isbn");
+			that(livro.getIsbn(), is(notNullValue()));
 		}});
 
 		validator.onErrorRedirectTo(this).formulario();

@@ -21,6 +21,7 @@
 		<dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.1" conf="default" />
 		<dependency org="mysql" name="mysql-connector-java" rev="5.1.15" conf="default" />
 		<dependency org="org.hamcrest" name="hamcrest-core" rev="1.2" conf="default" />
+		<dependency org="org.hamcrest" name="hamcrest-library" rev="1.2" conf="default" />
 
 		<!-- Provided dependencies -->
 		<dependency org="javax.servlet" name="servlet-api" rev="2.5" conf="provided->default" />
