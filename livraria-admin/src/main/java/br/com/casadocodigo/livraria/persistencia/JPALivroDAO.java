@@ -18,7 +18,9 @@ public class JPALivroDAO implements LivroDAO {
 
 	@Override
 	public void adiciona(Livro livro) {
+		this.manager.getTransaction().begin();
 		this.manager.persist(livro);
+		this.manager.getTransaction().commit();
 	}
 
 	@Override
