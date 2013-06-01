@@ -1,3 +1,11 @@
+<ul class="errors">
+	<c:forEach items="${errors}" var="error">
+		<li>
+			${error.category}: <!-- o campo em que ocorreu o erro, ou o tipo do erro -->
+			${error.message} <!-- a mensagem de erro de validação -->
+		</li>
+	</c:forEach>
+</ul>
 <form action="${linkTo[LivrosController].salva }" method="post">
 	<h2>Formulário de cadastro de livros</h2>
 	<ul>
@@ -7,7 +15,7 @@
 
 		<li>Descrição: <br/>
 		    <textarea name="livro.descricao">${livro.descricao
-		    }</textarea></li>
+		 	}</textarea></li>
 
 		<li>ISBN: <br/>
 		    <input type="text" name="livro.isbn"
