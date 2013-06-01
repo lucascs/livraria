@@ -2,6 +2,8 @@ package br.com.casadocodigo.livraria.controlador;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
@@ -24,6 +26,7 @@ public class LivrosController {
 	public void formulario() {
 	}
 
+	@Post("/livros")
 	public void salva(final Livro livro) {
 		validator.validate(livro);
 		validator.onErrorRedirectTo(this).formulario();
@@ -34,10 +37,12 @@ public class LivrosController {
 		result.redirectTo(this).lista();
 	}
 
+	@Get("/livros")
 	public List<Livro> lista() {
 		return estante.todosOsLivros();
 	}
 
+	@Get("/livros/{isbn}")
 	public void edita(String isbn) {
 		Livro livroEncontrado = estante.buscaPorIsbn(isbn);
 		if (livroEncontrado == null) {
