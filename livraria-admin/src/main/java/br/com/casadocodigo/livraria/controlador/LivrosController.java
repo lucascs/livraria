@@ -6,7 +6,7 @@ import java.util.List;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.I18nMessage;
+import br.com.caelum.vraptor.validator.Validations;
 import br.com.casadocodigo.livraria.modelo.Estante;
 import br.com.casadocodigo.livraria.modelo.Livro;
 
@@ -26,20 +26,16 @@ public class LivrosController {
 	public void formulario() {
 	}
 
-	public void salva(Livro livro) {
-		if (livro.getTitulo() == null) {
-			validator.add(new I18nMessage("titulo", "campo.obrigatorio", "título"));
-		}
+	public void salva(final Livro livro) {
+		validator.checking(new Validations() {{
+			that(livro.getTitulo() != null, "titulo", "campo.obrigatorio", "título");
 
-		if (livro.getPreco() == null) {
-			validator.add(new I18nMessage("preco", "campo.obrigatorio", "preço"));
-		} else if (livro.getPreco().compareTo(BigDecimal.ZERO) < 0) {
-			validator.add(new I18nMessage("preco", "campo.maior.que", "preço", 0));
-		}
+			if (that(livro.getPreco() != null, "preco", "campo.obrigatorio", "preco"))
+				that(livro.getPreco().compareTo(BigDecimal.ZERO) > 0,
+						"preco", "campo.maior.que", "preço", 0);
 
-		if (livro.getIsbn() == null) {
-			validator.add(new I18nMessage("isbn", "campo.obrigatorio", "isbn"));
-		}
+			that(livro.getIsbn() != null, "isbn", "campo.obrigatorio", "isbn");
+		}});
 
 		validator.onErrorRedirectTo(this).formulario();
 
