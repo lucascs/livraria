@@ -5,15 +5,25 @@ import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Livro {
-	@Id
+	@Id @NotEmpty
 	private String isbn;
 
+	@NotEmpty(message="{campo.obrigatorio}")
 	private String titulo;
 	private String descricao;
+
+	@NotNull @DecimalMin("0.0")
 	private BigDecimal preco;
+
+	@Past
 	private Calendar dataPublicacao;
 
 	public String getTitulo() {

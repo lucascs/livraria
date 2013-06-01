@@ -1,17 +1,10 @@
 package br.com.casadocodigo.livraria.controlador;
 
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-
-import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.Validations;
 import br.com.casadocodigo.livraria.modelo.Estante;
 import br.com.casadocodigo.livraria.modelo.Livro;
 
@@ -32,17 +25,7 @@ public class LivrosController {
 	}
 
 	public void salva(final Livro livro) {
-		validator.checking(new Validations() {{
-			that(livro.getTitulo(), is(notNullValue()));
-
-			that(livro.getPreco(), is(allOf(
-					notNullValue(),
-					greaterThan(BigDecimal.ZERO)
-			)));
-
-			that(livro.getIsbn(), is(notNullValue()));
-		}});
-
+		validator.validate(livro);
 		validator.onErrorRedirectTo(this).formulario();
 
 		estante.guarda(livro);
