@@ -2,20 +2,20 @@ package br.com.casadocodigo.livraria.site.controlador;
 
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.casadocodigo.livraria.site.modelo.Estante;
+import br.com.casadocodigo.livraria.site.modelo.Acervo;
 
 @Resource
 public class HomeController {
 
-	private Estante estante;
+	private Acervo acervo;
 	private Result result;
 
-	public HomeController(Estante estante, Result result) {
-		this.estante = estante;
+	public HomeController(Acervo acervo, Result result) {
+		this.acervo = acervo;
 		this.result = result;
 	}
 
 	public void inicio() {
-		result.include("livros", estante.todosOsLivros());
+		result.include("livros", acervo.todosOsLivros());
 	}
 }

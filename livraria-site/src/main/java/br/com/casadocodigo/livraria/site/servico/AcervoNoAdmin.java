@@ -2,16 +2,16 @@ package br.com.casadocodigo.livraria.site.servico;
 
 import java.util.List;
 
-import br.com.casadocodigo.livraria.site.modelo.Estante;
+import br.com.casadocodigo.livraria.site.modelo.Acervo;
 import br.com.casadocodigo.livraria.site.modelo.Livro;
 
 import com.thoughtworks.xstream.XStream;
 
-public class EstanteNoAdmin implements Estante {
+public class AcervoNoAdmin implements Acervo {
 
 	private ClienteHTTP http;
 
-	public EstanteNoAdmin(ClienteHTTP http) {
+	public AcervoNoAdmin(ClienteHTTP http) {
 		this.http = http;
 	}
 
