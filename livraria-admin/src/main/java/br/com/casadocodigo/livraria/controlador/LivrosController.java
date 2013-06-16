@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.casadocodigo.livraria.aspecto.Transacional;
 import br.com.casadocodigo.livraria.modelo.Estante;
 import br.com.casadocodigo.livraria.modelo.Livro;
 
@@ -26,6 +27,7 @@ public class LivrosController {
 	public void formulario() {
 	}
 
+	@Transacional
 	@Post("/livros")
 	public void salva(final Livro livro) {
 		validator.validate(livro);

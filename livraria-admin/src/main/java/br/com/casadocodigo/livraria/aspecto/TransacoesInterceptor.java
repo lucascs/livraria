@@ -19,7 +19,7 @@ public class TransacoesInterceptor implements Interceptor{
 
 	@Override
 	public boolean accepts(ResourceMethod method) {
-		return true;
+		return method.containsAnnotation(Transacional.class);
 	}
 
 	@Override
