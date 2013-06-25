@@ -2,6 +2,7 @@ package br.com.casadocodigo.livraria.modelo;
 
 import java.util.Calendar;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Past;
@@ -17,6 +18,7 @@ public class Livro {
 	private String titulo;
 	private String descricao;
 
+	@Embedded
 	private Dinheiro preco;
 
 	@Past

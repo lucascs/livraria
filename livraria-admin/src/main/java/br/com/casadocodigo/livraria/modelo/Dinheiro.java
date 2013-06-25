@@ -10,6 +10,7 @@ public class Dinheiro {
 		this.moeda = moeda;
 		this.montante = montante;
 	}
+	protected Dinheiro() {}
 
 	public Moeda getMoeda() {
 		return moeda;
