@@ -35,4 +35,9 @@ public class DinheiroConverterTest {
 		converter.convert("noventa pratas!", null, ResourceBundle.getBundle("messages"));
 	}
 
+	@Test(expected=ConversionError.class)
+	public void lancaErroDeConversaoQuandoOMontanteEhInvalido() {
+		Converter<Dinheiro> converter = new DinheiroConverter();
+		converter.convert("R$ mil", null, ResourceBundle.getBundle("messages"));
+	}
 }

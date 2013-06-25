@@ -22,17 +22,25 @@ public class DinheiroConverter
 
 		for (Moeda moeda : Moeda.values()) {
 			if (value.startsWith(moeda.getSimbolo())) {
-				return new Dinheiro(moeda,
-						new BigDecimal(
-							value.replace(moeda.getSimbolo(), "")
-								.replace(',', '.').trim()
-						)
-				);
+				return new Dinheiro(moeda, criaMontante(value, moeda, bundle));
 			}
 		}
 		throw new ConversionError(
 			MessageFormat.format(bundle.getString("dinheiro_invalido"), value)
 		);
 
+	}
+
+	private BigDecimal criaMontante(String value, Moeda moeda, ResourceBundle bundle) {
+		try {
+			return new BigDecimal(
+				value.replace(moeda.getSimbolo(), "")
+					.replace(',', '.').trim()
+			);
+		} catch (NumberFormatException e) {
+			throw new ConversionError(
+				MessageFormat.format(bundle.getString("dinheiro_invalido"), value)
+			);
+		}
 	}
 }
