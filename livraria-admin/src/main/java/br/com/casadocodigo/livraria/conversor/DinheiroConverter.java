@@ -18,14 +18,17 @@ public class DinheiroConverter
 			Class<? extends Dinheiro> type,
 			ResourceBundle bundle) {
 
-		if (value.startsWith("R$")) {
-			return new Dinheiro(Moeda.REAL,
-				new BigDecimal(
-						value.replace("R$ ", "")
-							.replace(',', '.')
-				)
-			);
+		for (Moeda moeda : Moeda.values()) {
+			if (value.startsWith(moeda.getSimbolo())) {
+				return new Dinheiro(moeda,
+						new BigDecimal(
+							value.replace(moeda.getSimbolo(), "")
+								.replace(',', '.').trim()
+						)
+				);
+			}
 		}
+
 		return null;
 	}
 }
