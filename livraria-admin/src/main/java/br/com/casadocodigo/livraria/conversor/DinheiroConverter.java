@@ -1,10 +1,12 @@
 package br.com.casadocodigo.livraria.conversor;
 
+import java.math.BigDecimal;
 import java.util.ResourceBundle;
 
 import br.com.caelum.vraptor.Convert;
 import br.com.caelum.vraptor.Converter;
 import br.com.casadocodigo.livraria.modelo.Dinheiro;
+import br.com.casadocodigo.livraria.modelo.Moeda;
 
 @Convert(Dinheiro.class)
 public class DinheiroConverter
@@ -15,7 +17,8 @@ public class DinheiroConverter
 			String value,
 			Class<? extends Dinheiro> type,
 			ResourceBundle bundle) {
-		return null;
+
+		return new Dinheiro(Moeda.REAL, new BigDecimal("1.00"));
 	}
 
 }
