@@ -1,10 +1,12 @@
 package br.com.casadocodigo.livraria.conversor;
 
 import java.math.BigDecimal;
+import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
 import br.com.caelum.vraptor.Convert;
 import br.com.caelum.vraptor.Converter;
+import br.com.caelum.vraptor.converter.ConversionError;
 import br.com.casadocodigo.livraria.modelo.Dinheiro;
 import br.com.casadocodigo.livraria.modelo.Moeda;
 
@@ -28,7 +30,9 @@ public class DinheiroConverter
 				);
 			}
 		}
+		throw new ConversionError(
+			MessageFormat.format(bundle.getString("dinheiro_invalido"), value)
+		);
 
-		return null;
 	}
 }
