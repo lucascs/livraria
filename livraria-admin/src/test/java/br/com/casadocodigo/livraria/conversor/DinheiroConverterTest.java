@@ -1,6 +1,7 @@
 package br.com.casadocodigo.livraria.conversor;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import java.math.BigDecimal;
@@ -39,5 +40,12 @@ public class DinheiroConverterTest {
 	public void lancaErroDeConversaoQuandoOMontanteEhInvalido() {
 		Converter<Dinheiro> converter = new DinheiroConverter();
 		converter.convert("R$ mil", null, ResourceBundle.getBundle("messages"));
+	}
+
+	@Test
+	public void converteStringVaziaEmNull() {
+		Converter<Dinheiro> converter = new DinheiroConverter();
+		assertThat(converter.convert("", null, ResourceBundle.getBundle("messages")),
+				is(nullValue()));
 	}
 }
