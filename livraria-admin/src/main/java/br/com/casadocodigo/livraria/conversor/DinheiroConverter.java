@@ -18,7 +18,14 @@ public class DinheiroConverter
 			Class<? extends Dinheiro> type,
 			ResourceBundle bundle) {
 
-		return new Dinheiro(Moeda.REAL, new BigDecimal("1.00"));
+		if (value.startsWith("R$")) {
+			return new Dinheiro(Moeda.REAL,
+				new BigDecimal(
+						value.replace("R$ ", "")
+							.replace(',', '.')
+				)
+			);
+		}
+		return null;
 	}
-
 }
