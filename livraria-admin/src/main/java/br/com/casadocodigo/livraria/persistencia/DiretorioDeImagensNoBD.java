@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.casadocodigo.livraria.modelo.Arquivo;
-import br.com.casadocodigo.livraria.modelo.ArquivoNoBD;
 import br.com.casadocodigo.livraria.modelo.DiretorioDeImagens;
 
 @Component
@@ -20,18 +19,21 @@ public class DiretorioDeImagensNoBD implements DiretorioDeImagens {
 
 	@Override
 	public URI grava(Arquivo arquivo) {
-		ArquivoNoBD arquivoNoBD = new ArquivoNoBD(arquivo.getNome(),
-				arquivo.getConteudo(), arquivo.getContentType(),
-				arquivo.getDataModificacao());
-		manager.persist(arquivoNoBD);
+		manager.persist(arquivo);
 
-		return URI.create("bd://" + arquivoNoBD.getId());
+		return URI.create("bd://" + arquivo.getId());
 	}
 
 	@Override
 	public Arquivo recupera(URI chave) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		if (chave == null) return null;
 
+		if (!chave.getScheme().equals("bd")) {
+			throw new IllegalArgumentException(chave +
+					" não é uma URI de banco de dados");
+		}
+
+		Long id = Long.valueOf(chave.getAuthority());
+ 		return manager.find(Arquivo.class, id);
+	}
 }

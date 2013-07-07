@@ -19,7 +19,7 @@ public class Livro {
 	private String titulo;
 	private String descricao;
 
-	private URI capa;
+	private String capa;
 
 	@Embedded
 	private Dinheiro preco;
@@ -68,11 +68,11 @@ public class Livro {
 	}
 
 	public URI getCapa() {
-		return capa;
+		if (capa == null) return null;
+		return URI.create(capa);
 	}
 
 	public void setCapa(URI capa) {
-		this.capa = capa;
+		this.capa = capa == null ? null : capa.toString();
 	}
-
 }

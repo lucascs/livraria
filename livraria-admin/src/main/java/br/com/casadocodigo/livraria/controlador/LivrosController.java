@@ -11,6 +11,8 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.interceptor.download.ByteArrayDownload;
+import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.casadocodigo.livraria.aspecto.Transacional;
 import br.com.casadocodigo.livraria.modelo.Arquivo;
@@ -76,5 +78,20 @@ public class LivrosController {
 
 			result.of(this).formulario();
 		}
+	}
+
+	@Get("/livros/{isbn}/capa")
+	public Download capa(String isbn) {
+		Livro livro = estante.buscaPorIsbn(isbn);
+
+		Arquivo capa = imagens.recupera(livro.getCapa());
+
+		if (capa == null) {
+			result.notFound();
+			return null;
+		}
+
+		return new ByteArrayDownload(capa.getConteudo(),
+				capa.getContentType(), capa.getNome());
 	}
 }
