@@ -16,6 +16,10 @@ public class ArquivoNoBD extends Arquivo {
 			Calendar dataModificacao) {
 		super(nome, conteudo, contentType, dataModificacao);
 	}
+	// Para a JPA não reclamar
+	ArquivoNoBD() {
+		super(null,null,null,null);
+	}
 
 	public Long getId() {
 		return id;
