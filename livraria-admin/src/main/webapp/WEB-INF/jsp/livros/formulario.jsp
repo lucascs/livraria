@@ -6,7 +6,8 @@
 		</li>
 	</c:forEach>
 </ul>
-<form action="${linkTo[LivrosController].salva }" method="post">
+<form action="${linkTo[LivrosController].salva }" 
+	method="post" enctype="multipart/form-data">
 	<h2>Formulário de cadastro de livros</h2>
 	<ul>
 		<li>Título: <br/>

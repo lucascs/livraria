@@ -1,5 +1,6 @@
 package br.com.casadocodigo.livraria.modelo;
 
+import java.net.URI;
 import java.util.Calendar;
 
 import javax.persistence.Embedded;
@@ -17,6 +18,8 @@ public class Livro {
 	@NotEmpty(message="{campo.obrigatorio}")
 	private String titulo;
 	private String descricao;
+
+	private URI capa;
 
 	@Embedded
 	private Dinheiro preco;
@@ -63,4 +66,13 @@ public class Livro {
 	public void setDataPublicacao(Calendar dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
+
+	public URI getCapa() {
+		return capa;
+	}
+
+	public void setCapa(URI capa) {
+		this.capa = capa;
+	}
+
 }
