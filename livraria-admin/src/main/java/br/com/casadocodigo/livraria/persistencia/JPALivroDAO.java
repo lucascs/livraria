@@ -3,6 +3,7 @@ package br.com.casadocodigo.livraria.persistencia;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.casadocodigo.livraria.modelo.Livro;
@@ -29,8 +30,15 @@ public class JPALivroDAO implements LivroDAO {
 	}
 
 	@Override
-	public Livro buscaPorId(String isbn) {
-		return this.manager.find(Livro.class, isbn);
+	public Livro buscaPorIsbn(String isbn) {
+		try {
+			return this.manager
+					.createQuery("select l from Livro l where l.isbn = :isbn", Livro.class)
+					.setParameter("isbn", isbn)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

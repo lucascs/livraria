@@ -3,8 +3,10 @@ package br.com.casadocodigo.livraria.modelo;
 import java.net.URI;
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Past;
 
@@ -12,7 +14,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Livro {
-	@Id @NotEmpty
+	@Id @GeneratedValue
+	private Long id;
+
+	@NotEmpty @Column(unique=true)
 	private String isbn;
 
 	@NotEmpty(message="{campo.obrigatorio}")
@@ -74,5 +79,13 @@ public class Livro {
 
 	public void setCapa(URI capa) {
 		this.capa = capa == null ? null : capa.toString();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

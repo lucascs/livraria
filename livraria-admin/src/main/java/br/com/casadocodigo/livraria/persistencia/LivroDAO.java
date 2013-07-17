@@ -7,5 +7,5 @@ import br.com.casadocodigo.livraria.modelo.Livro;
 public interface LivroDAO {
 	void adiciona(Livro livro);
 	List<Livro> todos();
-	Livro buscaPorId(String isbn);
+	Livro buscaPorIsbn(String isbn);
 }

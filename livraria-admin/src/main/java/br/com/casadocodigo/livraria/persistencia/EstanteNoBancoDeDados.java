@@ -27,7 +27,7 @@ public class EstanteNoBancoDeDados implements Estante {
 
 	@Override
 	public Livro buscaPorIsbn(String isbn) {
-		return this.dao.buscaPorId(isbn);
+		return this.dao.buscaPorIsbn(isbn);
 	}
 
 }

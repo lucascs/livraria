@@ -8,6 +8,7 @@
 </ul>
 <form action="${linkTo[LivrosController].salva }"
 	method="post" enctype="multipart/form-data">
+	<input type="hidden" name="livro.id" value="${livro.id}"/>
 	<h2>Formulário de cadastro de livros</h2>
 	<ul>
 		<li>Título: <br/>
