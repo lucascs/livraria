@@ -16,7 +16,7 @@ import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.casadocodigo.livraria.aspecto.Transacional;
 import br.com.casadocodigo.livraria.modelo.Arquivo;
-import br.com.casadocodigo.livraria.modelo.DiretorioDeImagens;
+import br.com.casadocodigo.livraria.modelo.Diretorio;
 import br.com.casadocodigo.livraria.modelo.Estante;
 import br.com.casadocodigo.livraria.modelo.Livro;
 
@@ -28,9 +28,9 @@ public class LivrosController {
 	private final Estante estante;
 	private Result result;
 	private Validator validator;
-	private DiretorioDeImagens imagens;
+	private Diretorio imagens;
 
-	public LivrosController(Estante estante, DiretorioDeImagens imagens,
+	public LivrosController(Estante estante, Diretorio imagens,
 			Result result, Validator validator) {
 		this.estante = estante;
 		this.imagens = imagens;

@@ -6,14 +6,14 @@ import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.casadocodigo.livraria.modelo.Arquivo;
-import br.com.casadocodigo.livraria.modelo.DiretorioDeImagens;
+import br.com.casadocodigo.livraria.modelo.Diretorio;
 
 @Component
-public class DiretorioDeImagensNoBD implements DiretorioDeImagens {
+public class DiretorioNoBD implements Diretorio {
 
 	private EntityManager manager;
 
-	public DiretorioDeImagensNoBD(EntityManager manager) {
+	public DiretorioNoBD(EntityManager manager) {
 		this.manager = manager;
 	}
 

@@ -23,6 +23,7 @@ public class AcervoNoAdmin implements Acervo {
 		xstream.alias("livros", List.class);
 		xstream.alias("livro", Livro.class);
 		List<Livro> livros = (List<Livro>) xstream.fromXML(xml);
+
 		return livros;
 	}
 }
